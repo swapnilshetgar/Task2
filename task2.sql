@@ -1,37 +1,48 @@
-CREATE TABLE EMP (
-    EMPNO INT AUTO_INCREMENT PRIMARY KEY  ,
-    ENAME VARCHAR(10) NOT NULL ,
-    SALARY NUMERIC(6) DEFAULT 4000,
-    COMM NUMERIC(6),
-    JOB VARCHAR(10)
+-- Create Employees Table
+CREATE TABLE Employees (
+    employee_id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_name VARCHAR(10) NOT NULL,
+    salary NUMERIC(6) DEFAULT 4000,
+    commission NUMERIC(6),
+    job_title VARCHAR(10)
 );
 
+-- Insert sample employee records
+INSERT INTO Employees (employee_name, salary, commission, job_title)
+VALUES ('SMITH', 5000, 500, 'CLERK');
 
-INSERT INTO EMP ( ENAME, SALARY, COMM, JOB)
-VALUES ( 'SMITH', 5000, 500, 'CLERK');
-
-INSERT INTO EMP (ENAME,  COMM, JOB)
+INSERT INTO Employees (employee_name, commission, job_title)
 VALUES ('WARD', 500, 'SALES');
 
-INSERT INTO EMP (ENAME, SALARY, JOB)
+INSERT INTO Employees (employee_name, salary, job_title)
 VALUES ('WARD', 7500, 'SALES');
 
-INSERT INTO EMP (ENAME, SALARY, JOB)
+INSERT INTO Employees (employee_name, salary, job_title)
 VALUES ('FORD', 9500, 'ANALYST');
 
 
-UPDATE EMP SET ENAME='JONES' WHERE EMPNO=3;
-UPDATE EMP SET JOB='SALESMAN' WHERE EMPNO IN (2,3);
+INSERT INTO Employees (employee_name, salary, commission, job_title)
+VALUES ('ALLEN', 6200, 300, 'SALESMAN');
 
-DELETE FROM EMP WHERE EMPNO=4;
-DELETE FROM EMP WHERE ENAME='SMITH';
+INSERT INTO Employees (employee_name, salary, job_title)
+VALUES ('BLAKE', 8800, 'MANAGER');
 
-SELECT * FROM EMP;
+INSERT INTO Employees (employee_name, salary, commission, job_title)
+VALUES ('CLARK', 7200, 450, 'SALESMAN');
 
-SELECT * FROM EMP WHERE COMM IS NULL;
+INSERT INTO Employees (employee_name, job_title)
+VALUES ('MILLER', 'CLERK');
 
+-- Update operations
+UPDATE Employees SET employee_name = 'JONES' WHERE employee_id = 3;
+UPDATE Employees SET job_title = 'SALESMAN' WHERE employee_id IN (2, 3);
 
+-- Delete operations
+DELETE FROM Employees WHERE employee_id = 4;
+DELETE FROM Employees WHERE employee_name = 'SMITH';
 
+-- Select all remaining records
+SELECT * FROM Employees;
 
-
-
+-- Select employees whose commission is NULL
+SELECT * FROM Employees WHERE commission IS NULL;
